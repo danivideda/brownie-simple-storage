@@ -1,8 +1,10 @@
-from brownie import accounts
-import os
+from os import confstr
+from brownie import accounts, config
+
+PRIVATE_KEY = config["wallets"]["private_key"]
 
 def init_accounts():
-    account = accounts.add(os.getenv("PRIVATE_KEY"))
+    account = accounts.add(PRIVATE_KEY)
     print("My Account: \n", account)
 
     print("All account: ")

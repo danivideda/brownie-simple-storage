@@ -1,1 +1,3 @@
 dotenv: .env
+wallets:
+  private_key: ${PRIVATE_KEY}

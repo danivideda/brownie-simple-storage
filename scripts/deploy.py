@@ -1,9 +1,9 @@
-from os import confstr
-from brownie import accounts, config
+from brownie import accounts, config, SimpleStorage
 
 PRIVATE_KEY = config["wallets"]["private_key"]
 
 def init_accounts():
+    global account
     account = accounts.add(PRIVATE_KEY)
     print("My Account: \n", account)
 
@@ -13,6 +13,11 @@ def init_accounts():
 
 def deploy_simple_storage():
     init_accounts()
+
+    print("Deploying contracts...")
+    simple_storage = SimpleStorage.deploy({"from": account})
+
+    print(simple_storage)
 
 def main():
     deploy_simple_storage()

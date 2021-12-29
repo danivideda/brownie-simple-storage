@@ -2,6 +2,7 @@ from brownie import accounts, config, SimpleStorage
 
 PRIVATE_KEY = config["wallets"]["private_key"]
 
+
 def init_accounts():
     global account
     account = accounts.add(PRIVATE_KEY)
@@ -10,8 +11,9 @@ def init_accounts():
     print("All account: ")
     for i in range(len(accounts)):
         print(accounts[i])
-    
+
     print("==========")
+
 
 def deploy_simple_storage():
     init_accounts()
@@ -28,6 +30,7 @@ def deploy_simple_storage():
     transaction.wait(1)
     updated_stored_value = simple_storage.retrieve()
     print("Updated Stored value:", updated_stored_value)
+
 
 def main():
     deploy_simple_storage()
